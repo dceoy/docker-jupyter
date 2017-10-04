@@ -6,7 +6,6 @@ services:
     build:
       context: .
     image: dceoy/jupyter:latest
-    user: ${UID}:${GID}
     ports:
       - 8888:8888
     volumes:

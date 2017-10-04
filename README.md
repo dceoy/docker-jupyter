@@ -15,5 +15,5 @@ $ docker pull dceoy/jupyter
 Run a container
 
 ```sh
-$ docker container run --rm -p 8888:8888 -v $(pwd):/work -w /work -u $(id -u):$(id -g) dceoy/jupyter
+$ docker container run --rm -it -p 8888:8888 -v $(pwd):/work -w /work dceoy/jupyter
 ```
