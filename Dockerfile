@@ -10,6 +10,7 @@ RUN set -e \
       && apt-get -y update \
       && apt-get -y upgrade \
       && apt-get -y install apt-utils \
+      && apt-get -y autoremove \
       && apt-get clean
 
 USER ${NB_USER}
