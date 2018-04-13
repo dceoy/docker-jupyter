@@ -9,5 +9,5 @@ services:
     ports:
       - 8888:8888
     volumes:
-      - ${HOME}:/work
+      - ${PWD}:/work
     working_dir: /work
