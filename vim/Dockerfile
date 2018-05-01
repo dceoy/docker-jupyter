@@ -1,4 +1,4 @@
-FROM jupyter/scipy-notebook
+FROM jupyter/scipy-notebook:latest
 
 USER root
 
@@ -22,7 +22,7 @@ RUN set -e \
                           numpy pandas plotly psutil pymc pystan pytoml pyyaml scikit-learn scipy \
                           seaborn sphinx sympy tensorflow xgboost \
       && conda clean -tipsy \
-      && fix-permissions $CONDA_DIR
+      && fix-permissions ${CONDA_DIR}
 
 RUN set -e \
       && jupyter contrib nbextension install --user \
