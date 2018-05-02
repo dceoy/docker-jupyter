@@ -16,13 +16,16 @@ RUN set -e \
 USER ${NB_USER}
 
 RUN set -e \
-      && conda upgrade --all -y \
-      && conda install -y biopython bokeh cython csvkit docopt fbprophet feather-format flake8 \
-                          ggplot jupyter_contrib_nbextensions jupyterthemes keras lightgbm luigi \
-                          numpy pandas plotly psutil pymc pystan pytoml pyyaml scikit-learn scipy \
-                          seaborn sphinx sympy tensorflow xgboost \
+      && conda update -y -n base conda \
+      && conda update --all -y \
+      && conda install -y airflow biopython bokeh cython csvkit docopt fbprophet feather-format \
+                          flake8 ggplot jupyter_contrib_nbextensions jupyterthemes keras lightgbm \
+                          luigi matplotlib numpy pandas plotly psutil pymc pystan pytoml pyyaml \
+                          redis scikit-learn scipy seaborn sphinx sympy tensorflow tornado \
+                          xgboost xmltodict \
       && conda clean -tipsy \
-      && fix-permissions ${CONDA_DIR}
+      && fix-permissions ${CONDA_DIR} \
+      && fix-permissions /home/${NB_USER}
 
 RUN set -e \
       && jt --theme oceans16 --toolbar --nbname --vimext
