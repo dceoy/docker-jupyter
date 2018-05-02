@@ -23,3 +23,6 @@ RUN set -e \
                           seaborn sphinx sympy tensorflow xgboost \
       && conda clean -tipsy \
       && fix-permissions ${CONDA_DIR}
+
+RUN set -e \
+      && jt --theme oceans16 --toolbar --nbname --vimext
