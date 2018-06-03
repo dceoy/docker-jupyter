@@ -28,4 +28,5 @@ RUN set -e \
       && fix-permissions /home/${NB_USER}
 
 RUN set -e \
+      && jupyter contrib nbextension install --user \
       && jt --theme oceans16 --toolbar --nbname --vimext
