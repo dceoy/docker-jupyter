@@ -9,9 +9,10 @@ RUN set -e \
 RUN set -e \
       && apt-get -y update \
       && apt-get -y upgrade \
-      && apt-get -y install apt-utils \
+      && apt-get -y install --no-install-recommends --no-install-suggests apt-utils \
       && apt-get -y autoremove \
-      && apt-get clean
+      && apt-get clean \
+      && rm -rf /var/lib/apt/lists/*
 
 USER ${NB_USER}
 
