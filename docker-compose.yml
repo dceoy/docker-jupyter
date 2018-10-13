@@ -5,7 +5,7 @@ services:
   notebook:
     container_name: notebook
     build:
-      context: latest
+      context: .
     image: dceoy/jupyter:latest
     ports:
       - 8888:8888
