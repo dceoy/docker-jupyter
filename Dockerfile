@@ -19,8 +19,12 @@ RUN set -e \
         lightgbm matplotlib pandas pandas-datareader pip psutil pystan \
         scikit-learn scipy seaborn sklearn-pandas statsmodels xgboost
 
-RUN set -e \
-      && jupyter contrib nbextension install --system \
-      && jt --theme oceans16 --toolbar --nbname --vimext
+ENV HOME /home/notebook
 
-ENTRYPOINT ["/usr/local/bin/python"]
+RUN set -e \
+      && mkdir ${HOME} \
+      && jupyter contrib nbextension install --system \
+      && jt --theme oceans16 --toolbar --nbname --vimext \
+      && find ${HOME} -exec chmod 777 {} \;
+
+ENTRYPOINT ["jupyter"]
