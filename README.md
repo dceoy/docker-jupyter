@@ -1,7 +1,7 @@
 docker-jupyter
 ==============
 
-Dockerfile for Jupyter notebook
+Dockerfile for Jupyter notebook based on the latest Python image
 
 Docker image
 ------------
@@ -18,7 +18,7 @@ Usage
 Run a server
 
 ```sh
-$ docker container run --rm -it -p 8888:8888 -v $(pwd):/work -w /work dceoy/jupyter
+$ docker container run --rm -p=8888:8888 -v=${pwd}:/nb -w=/nb dceoy/jupyter
 ```
 
 Run a server with docker-compose

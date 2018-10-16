@@ -27,4 +27,7 @@ RUN set -e \
       && jt --theme oceans16 --toolbar --nbname --vimext \
       && find ${HOME} -exec chmod 777 {} \;
 
+EXPOSE 8888
+
 ENTRYPOINT ["jupyter"]
+CMD ["notebook", "--port=8888", "--ip=0.0.0.0", "--allow-root", "--no-browser"]
