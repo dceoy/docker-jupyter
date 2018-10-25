@@ -15,14 +15,16 @@ RUN set -e \
 RUN set -e \
       && pip install -U --no-cache-dir numpy \
       && pip install -U --no-cache-dir \
-        flake8 ggplot jupyter jupyter_contrib_nbextensions jupyterthemes \
-        lightgbm matplotlib pandas pandas-datareader pip psutil pystan \
-        scikit-learn scipy seaborn sklearn-pandas statsmodels xgboost
+        autopep8 bash_kernel flake8 ggplot jupyter \
+        jupyter_contrib_nbextensions jupyterthemes lightgbm matplotlib \
+        pandas pandas-datareader pip psutil pystan scikit-learn scipy \
+        seaborn sklearn-pandas statsmodels tqdm xgboost
 
 ENV HOME /home/notebook
 
 RUN set -e \
       && mkdir ${HOME} \
+      && python -m bash_kernel.install \
       && jupyter contrib nbextension install --system \
       && jt --theme oceans16 --toolbar --nbname --vimext \
       && find ${HOME} -exec chmod 777 {} \;
