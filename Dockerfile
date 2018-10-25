@@ -8,14 +8,14 @@ RUN set -e \
       && apt-get -y dist-upgrade \
       && apt-get -y autoremove \
       && apt-get -y install --no-install-recommends --no-install-suggests \
-        build-essential \
+        build-essential p7zip-full pbzip2 pigz \
       && apt-get clean \
       && rm -rf /var/lib/apt/lists/*
 
 RUN set -e \
       && pip install -U --no-cache-dir numpy \
       && pip install -U --no-cache-dir \
-        autopep8 bash_kernel flake8 ggplot jupyter \
+        autopep8 bash_kernel cython feather-format flake8 ggplot jupyter \
         jupyter_contrib_nbextensions jupyterthemes lightgbm matplotlib \
         pandas pandas-datareader pip psutil pystan scikit-learn scipy \
         seaborn sklearn-pandas statsmodels tqdm xgboost
