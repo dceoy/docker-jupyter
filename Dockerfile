@@ -8,7 +8,7 @@ RUN set -e \
       && apt-get -y dist-upgrade \
       && apt-get -y autoremove \
       && apt-get -y install --no-install-recommends --no-install-suggests \
-        gcc libc-dev p7zip-full pbzip2 pigz \
+        curl gcc libc-dev p7zip-full pbzip2 pigz \
       && apt-get clean \
       && rm -rf /var/lib/apt/lists/*
 
