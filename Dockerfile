@@ -9,7 +9,7 @@ RUN set -e \
       && apt-get -y autoremove \
       && apt-get -y install --no-install-recommends --no-install-suggests \
         curl gcc libc-dev p7zip-full pandoc pbzip2 pigz \
-        texlive-fonts-recommended texlive-xetex \
+        texlive-fonts-recommended texlive-generic-recommended texlive-xetex \
       && apt-get clean \
       && rm -rf /var/lib/apt/lists/*
 
