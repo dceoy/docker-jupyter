@@ -27,7 +27,7 @@ RUN set -e \
       && mkdir ${HOME} \
       && python -m bash_kernel.install \
       && jupyter contrib nbextension install --system \
-      && jt --theme oceans16 --toolbar --nbname --vimext \
+      && jt --theme oceans16 -f ubuntu --toolbar --nbname --vimext \
       && find ${HOME} -exec chmod 777 {} \;
 
 EXPOSE 8888
