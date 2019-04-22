@@ -8,10 +8,14 @@ RUN set -e \
       && apt-get -y dist-upgrade \
       && apt-get -y autoremove \
       && apt-get -y install --no-install-recommends --no-install-suggests \
-        curl gcc libc-dev p7zip-full pandoc pbzip2 pigz \
+        curl gcc libc-dev locales p7zip-full pandoc pbzip2 pigz \
         texlive-fonts-recommended texlive-generic-recommended texlive-xetex \
       && apt-get clean \
       && rm -rf /var/lib/apt/lists/*
+
+RUN set -e \
+      && locale-gen en_US.UTF-8 \
+      && update-locale
 
 RUN set -e \
       && pip install -U --no-cache-dir numpy \
