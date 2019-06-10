@@ -20,10 +20,11 @@ RUN set -e \
 RUN set -e \
       && pip install -U --no-cache-dir numpy \
       && pip install -U --no-cache-dir \
-        autopep8 bash_kernel cython feather-format flake8 ggplot jupyter \
-        jupyter_contrib_nbextensions jupyterthemes lightgbm matplotlib \
-        pandas pandas-datareader pip psutil pystan scikit-learn scipy \
-        seaborn sklearn-pandas statsmodels tqdm xgboost
+        autopep8 bash_kernel cython feather-format flake8 flake8-bugbear \
+        flake8-isort ggplot jupyter jupyter_contrib_nbextensions \
+        jupyterthemes lightgbm matplotlib pandas pandas-datareader \
+        pep8-naming pip psutil pystan scikit-learn scipy seaborn \
+        sklearn-pandas statsmodels tqdm xgboost
 
 ENV HOME /home/notebook
 
