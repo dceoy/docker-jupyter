@@ -11,9 +11,8 @@ RUN set -e \
       && apt-get -y update \
       && apt-get -y dist-upgrade \
       && apt-get -y install --no-install-recommends --no-install-suggests \
-        apt-transport-https apt-utils ca-certificates cmake curl file g++ gcc \
-        git liblapack-dev locales make p7zip-full pandoc pbzip2 pigz \
-        pkg-config python3.7-dev python3.7-distutils \
+        apt-transport-https apt-utils ca-certificates curl gcc locales \
+        p7zip-full pandoc pbzip2 pigz python3.7-dev python3.7-distutils \
         texlive-fonts-recommended texlive-generic-recommended texlive-xetex \
       && apt-get -y autoremove \
       && apt-get clean \
@@ -30,7 +29,7 @@ RUN set -e \
         autopep8 bash_kernel feather-format flake8 flake8-bugbear \
         flake8-isort ggplot jupyter jupyter_contrib_nbextensions \
         jupyterthemes lightgbm matplotlib pandas pandas-datareader \
-        pep8-naming pip psutil pystan scikit-learn scipy seaborn \
+        pep8-naming psutil pystan scikit-learn scipy seaborn \
         sklearn-pandas statsmodels tqdm xgboost
 
 ENV HOME /home/notebook
