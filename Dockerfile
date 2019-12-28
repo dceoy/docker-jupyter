@@ -1,4 +1,8 @@
-FROM python:slim
+FROM ubuntu:latest
+
+ENV DEBIAN_FRONTEND noninteractive
+
+ADD https://bootstrap.pypa.io/get-pip.py /tmp/get-pip.py
 
 RUN set -e \
       && ln -sf /bin/bash /bin/sh
@@ -6,10 +10,12 @@ RUN set -e \
 RUN set -e \
       && apt-get -y update \
       && apt-get -y dist-upgrade \
-      && apt-get -y autoremove \
       && apt-get -y install --no-install-recommends --no-install-suggests \
-        curl gcc libc-dev locales p7zip-full pandoc pbzip2 pigz \
+        apt-transport-https apt-utils ca-certificates cmake curl file g++ gcc \
+        git liblapack-dev locales make p7zip-full pandoc pbzip2 pigz \
+        pkg-config python3.7-dev python3.7-distutils \
         texlive-fonts-recommended texlive-generic-recommended texlive-xetex \
+      && apt-get -y autoremove \
       && apt-get clean \
       && rm -rf /var/lib/apt/lists/*
 
@@ -18,9 +24,10 @@ RUN set -e \
       && update-locale
 
 RUN set -e \
-      && pip install -U --no-cache-dir numpy \
+      && python3.7 /tmp/get-pip.py \
+      && pip install -U --no-cache-dir cython numpy pip \
       && pip install -U --no-cache-dir \
-        autopep8 bash_kernel cython feather-format flake8 flake8-bugbear \
+        autopep8 bash_kernel feather-format flake8 flake8-bugbear \
         flake8-isort ggplot jupyter jupyter_contrib_nbextensions \
         jupyterthemes lightgbm matplotlib pandas pandas-datareader \
         pep8-naming pip psutil pystan scikit-learn scipy seaborn \
@@ -30,7 +37,7 @@ ENV HOME /home/notebook
 
 RUN set -e \
       && mkdir ${HOME} \
-      && python -m bash_kernel.install \
+      && python3.7 -m bash_kernel.install \
       && jupyter contrib nbextension install --system \
       && jt --theme oceans16 -f ubuntu --toolbar --nbname --vimext \
       && find ${HOME} -exec chmod 777 {} \;
