@@ -23,7 +23,9 @@ RUN set -e \
       && update-locale
 
 RUN set -e \
-      && python3.7 /tmp/get-pip.py \
+      && ln -sf /usr/bin/python3.7 /usr/bin/python \
+      && ln -sf /usr/bin/python3.7 /usr/bin/python3 \
+      && /usr/bin/python /tmp/get-pip.py \
       && pip install -U --no-cache-dir cython numpy pip \
       && pip install -U --no-cache-dir \
         autopep8 bash_kernel feather-format flake8 flake8-bugbear \
@@ -36,7 +38,7 @@ ENV HOME /home/notebook
 
 RUN set -e \
       && mkdir ${HOME} \
-      && python3.7 -m bash_kernel.install \
+      && /usr/bin/python -m bash_kernel.install \
       && jupyter contrib nbextension install --system \
       && jt --theme oceans16 -f ubuntu --toolbar --nbname --vimext \
       && find ${HOME} -exec chmod 777 {} \;
