@@ -44,5 +44,5 @@ RUN set -e \
 
 EXPOSE 8888
 
-ENTRYPOINT ["jupyter"]
+ENTRYPOINT ["/usr/local/bin/jupyter"]
 CMD ["notebook", "--port=8888", "--ip=0.0.0.0", "--allow-root", "--no-browser"]

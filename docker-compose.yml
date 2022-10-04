@@ -16,7 +16,7 @@ services:
       - ${PWD}:/nb
     working_dir: /nb
     entrypoint:
-      - jupyter
+      - /usr/local/bin/jupyter
     command:
       - notebook
       - --port=8888
