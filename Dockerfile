@@ -27,11 +27,11 @@ RUN set -e \
       && /usr/bin/python3 /tmp/get-pip.py \
       && pip install -U --no-cache-dir cython numpy pip \
       && pip install -U --no-cache-dir \
-        autopep8 bash_kernel feather-format flake8 flake8-bugbear \
-        flake8-isort ggplot jupyter jupyter_contrib_nbextensions \
+        autopep8 bash_kernel catboost feather-format flake8 flake8-bugbear \
+        flake8-isort ggplot ipywidgets jupyter jupyter_contrib_nbextensions \
         jupyterthemes lightgbm matplotlib pandas pandas-datareader \
-        pep8-naming psutil pystan scikit-learn scipy seaborn \
-        sklearn-pandas statsmodels tqdm xgboost
+        pep8-naming psutil pystan scikit-learn scipy seaborn sklearn-pandas \
+        statsmodels tqdm xgboost
 
 ENV HOME /home/notebook
 
@@ -40,7 +40,8 @@ RUN set -e \
       && /usr/bin/python3 -m bash_kernel.install \
       && jupyter contrib nbextension install --system \
       && jt --theme oceans16 -f ubuntu --toolbar --nbname --vimext \
-      && find ${HOME} -exec chmod 777 {} \;
+      && find ${HOME} -exec chmod 777 {} \; \
+      && jupyter nbextension enable --py widgetsnbextension
 
 EXPOSE 8888
 
