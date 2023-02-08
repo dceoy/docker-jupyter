@@ -28,10 +28,11 @@ RUN set -e \
       && pip install -U --no-cache-dir cython numpy pip \
       && pip install -U --no-cache-dir \
         autopep8 bash_kernel catboost feather-format flake8 flake8-bugbear \
-        flake8-isort ggplot ipywidgets jupyter jupyter_contrib_nbextensions \
-        jupyterthemes lightgbm matplotlib pandas pandas-datareader \
-        pep8-naming psutil pystan scikit-learn scipy seaborn sklearn-pandas \
-        statsmodels tqdm xgboost
+        flake8-isort ggplot ipywidgets jupyterlab \
+        jupyter_contrib_nbextensions jupyterthemes lightgbm matplotlib pandas \
+        pandas-datareader pep8-naming plotly polars psutil pystan \
+        scikit-learn scipy seaborn sklearn-pandas sktime statsmodels tqdm \
+        xgboost
 
 ENV HOME /home/notebook
 
@@ -46,4 +47,4 @@ RUN set -e \
 EXPOSE 8888
 
 ENTRYPOINT ["/usr/local/bin/jupyter"]
-CMD ["notebook", "--port=8888", "--ip=0.0.0.0", "--allow-root", "--no-browser"]
+CMD ["lab", "--port=8888", "--ip=0.0.0.0", "--allow-root", "--no-browser"]

@@ -1,7 +1,7 @@
 docker-jupyter
 ==============
 
-Dockerfile for Jupyter notebook based on the latest Python image
+Dockerfile for JupyterLab
 
 [![CI to Docker Hub](https://github.com/dceoy/docker-jupyter/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/dceoy/docker-jupyter/actions/workflows/docker-publish.yml)
 
